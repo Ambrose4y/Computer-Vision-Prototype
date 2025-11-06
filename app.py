@@ -1,3 +1,5 @@
+import tempfile
+import os
 import streamlit as st
 from PIL import Image
 import io
@@ -101,7 +103,7 @@ def process_image(image_file, domains):
         img_byte_arr = img_byte_arr.getvalue()
         
         # Save temporarily
-        temp_path = "/tmp/uploaded_image.jpg"
+        temp_path = os.path.join(tempfile.gettempdir(), "uploaded_image.jpg")
         with open(temp_path, "wb") as f:
             f.write(img_byte_arr)
         
